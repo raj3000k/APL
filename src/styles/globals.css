@@ -1,0 +1,79 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  color-scheme: dark;
+  --background: 225 32% 9%;
+  --foreground: 215 33% 97%;
+  --muted: 220 25% 17%;
+  --muted-foreground: 216 15% 75%;
+  --card: 222 32% 13%;
+  --card-foreground: 215 33% 97%;
+  --border: 217 24% 23%;
+  --theme-from: 0 72% 48%;
+  --theme-via: 8 88% 58%;
+  --theme-to: 14 100% 64%;
+  --theme-accent: 18 100% 63%;
+  --theme-accent-soft: 359 86% 78%;
+}
+
+* {
+  border-color: hsl(var(--border));
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  @apply min-h-screen bg-[hsl(var(--background))] font-body text-[hsl(var(--foreground))] antialiased;
+  background-image:
+    radial-gradient(circle at top right, hsla(var(--theme-accent) / 0.22), transparent 20%),
+    radial-gradient(circle at bottom left, hsla(var(--theme-accent-soft) / 0.14), transparent 25%),
+    linear-gradient(135deg, #090b14 0%, #101729 45%, #080b13 100%);
+}
+
+#root {
+  @apply min-h-screen;
+}
+
+::selection {
+  background: hsla(var(--theme-accent) / 0.35);
+}
+
+::-webkit-scrollbar {
+  width: 10px;
+  height: 10px;
+}
+
+::-webkit-scrollbar-thumb {
+  background: linear-gradient(
+    180deg,
+    hsla(var(--theme-accent) / 0.8),
+    hsla(var(--theme-accent-soft) / 0.6)
+  );
+  border-radius: 999px;
+}
+
+.glass-panel {
+  @apply border border-white/10 bg-white/5 backdrop-blur-2xl;
+  box-shadow: 0 24px 60px rgba(2, 6, 23, 0.35);
+}
+
+.glow-ring {
+  box-shadow:
+    0 0 0 1px hsla(var(--theme-accent) / 0.18),
+    0 20px 80px hsla(var(--theme-accent) / 0.2);
+}
+
+.gradient-text {
+  background: linear-gradient(
+    135deg,
+    hsl(var(--theme-accent-soft)) 0%,
+    hsl(var(--theme-accent)) 100%
+  );
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}

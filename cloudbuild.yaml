@@ -1,0 +1,19 @@
+steps:
+  - name: "gcr.io/cloud-builders/docker"
+    args:
+      - "build"
+      - "-t"
+      - "${_IMAGE}"
+      - "--build-arg"
+      - "VITE_SUPABASE_URL=${_VITE_SUPABASE_URL}"
+      - "--build-arg"
+      - "VITE_SUPABASE_ANON_KEY=${_VITE_SUPABASE_ANON_KEY}"
+      - "."
+
+images:
+  - "${_IMAGE}"
+
+substitutions:
+  _IMAGE: "us-central1-docker.pkg.dev/$PROJECT_ID/fanpulse/fanpulse-ipl"
+  _VITE_SUPABASE_URL: "https://your-project-ref.supabase.co"
+  _VITE_SUPABASE_ANON_KEY: "your-anon-key"
