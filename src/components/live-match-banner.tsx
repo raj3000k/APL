@@ -1,5 +1,6 @@
 import { motion } from "framer-motion";
 import { Flame, Gavel, HeartCrack, Siren } from "lucide-react";
+import { TeamIdentity } from "@/components/team-logo";
 import { toast } from "sonner";
 import { Button } from "@/components/ui/button";
 import type { FanPulseActions } from "@/hooks/use-fanpulse";
@@ -36,9 +37,12 @@ export function LiveMatchBanner({
         <div className="relative flex flex-col gap-4 lg:flex-row lg:items-center lg:justify-between">
           <div>
             <p className="text-sm font-semibold tracking-[0.24em] text-rose-300">LIVE MODE</p>
-            <h2 className="font-display text-2xl font-semibold">
-              {liveMatch.homeTeam} vs {liveMatch.awayTeam} LIVE 🔴
-            </h2>
+            <div className="mt-2 flex flex-wrap items-center gap-3 font-display text-2xl font-semibold">
+              <TeamIdentity team={liveMatch.homeTeam} logoClassName="h-8 w-8" />
+              <span className="text-white/70">vs</span>
+              <TeamIdentity team={liveMatch.awayTeam} logoClassName="h-8 w-8" />
+              <span>LIVE 🔴</span>
+            </div>
             <p className="text-sm text-white/65">
               Tap a reaction to auto-join the emotion room in real time.
             </p>

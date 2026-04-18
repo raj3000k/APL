@@ -12,6 +12,7 @@ import { NavLink } from "react-router-dom";
 import type { PropsWithChildren, ReactNode } from "react";
 import { BallTrailCursor } from "@/components/ball-trail-cursor";
 import { NotificationCenter } from "@/components/notification-center";
+import { TeamIdentity } from "@/components/team-logo";
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 import { Button } from "@/components/ui/button";
 import { TeamBadge } from "@/components/team-badge";
@@ -123,9 +124,17 @@ export function AppShell({
                 <p className="text-xs font-semibold uppercase tracking-[0.26em] text-white/45">
                   Premium Fan Network
                 </p>
-                <h2 className="font-display text-2xl font-semibold text-white">
-                  {theme.label}
-                </h2>
+                {currentUser.team ? (
+                  <TeamIdentity
+                    team={currentUser.team}
+                    showLabel
+                    logoClassName="h-8 w-8"
+                    textClassName="font-display text-2xl font-semibold text-white"
+                    className="mt-1"
+                  />
+                ) : (
+                  <h2 className="font-display text-2xl font-semibold text-white">{theme.label}</h2>
+                )}
               </div>
               <div className="flex items-center gap-3">
                 <NotificationCenter

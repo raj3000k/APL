@@ -4,18 +4,22 @@
 
 :root {
   color-scheme: dark;
-  --background: 225 32% 9%;
+  --background: 221 24% 10%;
   --foreground: 215 33% 97%;
   --muted: 220 25% 17%;
   --muted-foreground: 216 15% 75%;
-  --card: 222 32% 13%;
+  --card: 223 33% 14%;
   --card-foreground: 215 33% 97%;
-  --border: 217 24% 23%;
-  --theme-from: 0 72% 48%;
-  --theme-via: 8 88% 58%;
-  --theme-to: 14 100% 64%;
-  --theme-accent: 18 100% 63%;
-  --theme-accent-soft: 359 86% 78%;
+  --border: 220 26% 24%;
+  --theme-from: 224 69% 32%;
+  --theme-via: 221 76% 25%;
+  --theme-to: 225 24% 9%;
+  --theme-accent: 44 90% 63%;
+  --theme-accent-soft: 219 100% 83%;
+  --theme-shell-start: 225 24% 9%;
+  --theme-shell-mid: 221 59% 19%;
+  --theme-shell-end: 224 69% 32%;
+  --theme-on-accent: 225 24% 9%;
 }
 
 * {
@@ -29,9 +33,15 @@ html {
 body {
   @apply min-h-screen bg-[hsl(var(--background))] font-body text-[hsl(var(--foreground))] antialiased;
   background-image:
-    radial-gradient(circle at top right, hsla(var(--theme-accent) / 0.22), transparent 20%),
-    radial-gradient(circle at bottom left, hsla(var(--theme-accent-soft) / 0.14), transparent 25%),
-    linear-gradient(135deg, #090b14 0%, #101729 45%, #080b13 100%);
+    radial-gradient(circle at top, hsla(var(--theme-accent) / 0.14), transparent 18%),
+    radial-gradient(circle at 16% 20%, hsla(var(--theme-accent-soft) / 0.18), transparent 22%),
+    radial-gradient(circle at 88% 10%, hsla(var(--theme-via) / 0.2), transparent 24%),
+    linear-gradient(
+      155deg,
+      hsl(var(--theme-shell-start)) 0%,
+      hsl(var(--theme-shell-mid)) 46%,
+      hsl(var(--theme-shell-end)) 100%
+    );
 }
 
 #root {
@@ -57,14 +67,19 @@ body {
 }
 
 .glass-panel {
-  @apply border border-white/10 bg-white/5 backdrop-blur-2xl;
-  box-shadow: 0 24px 60px rgba(2, 6, 23, 0.35);
+  @apply border border-white/10 backdrop-blur-2xl;
+  background:
+    linear-gradient(180deg, rgba(255, 255, 255, 0.1), rgba(255, 255, 255, 0.04)),
+    rgba(5, 10, 24, 0.44);
+  box-shadow:
+    0 24px 60px rgba(2, 6, 23, 0.35),
+    inset 0 1px 0 rgba(255, 255, 255, 0.06);
 }
 
 .glow-ring {
   box-shadow:
     0 0 0 1px hsla(var(--theme-accent) / 0.18),
-    0 20px 80px hsla(var(--theme-accent) / 0.2);
+    0 18px 65px hsla(var(--theme-accent) / 0.16);
 }
 
 .gradient-text {

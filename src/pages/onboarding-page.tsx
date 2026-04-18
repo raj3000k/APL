@@ -3,6 +3,7 @@ import { useForm } from "react-hook-form";
 import { toast } from "sonner";
 import { z } from "zod";
 import { Button } from "@/components/ui/button";
+import { TeamLogo } from "@/components/team-logo";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { Input } from "@/components/ui/input";
 import { TEAM_OPTIONS } from "@/utils/teams";
@@ -77,7 +78,7 @@ export function OnboardingPage({
               <div className="space-y-3">
                 <label className="text-sm font-medium text-white/75">Choose one IPL team</label>
                 <div className="grid gap-3 sm:grid-cols-2">
-                  {TEAM_OPTIONS.map((team) => (
+                  {TEAM_OPTIONS.filter((team): team is typeof team & { key: TeamKey } => Boolean(team.key)).map((team) => (
                     <button
                       key={team.key}
                       type="button"
@@ -93,7 +94,13 @@ export function OnboardingPage({
                           : "border-white/10 bg-white/5 hover:border-white/20"
                       }`}
                     >
-                      <p className="font-display text-lg font-semibold">{team.key}</p>
+                      <div className="flex items-center gap-3">
+                        <TeamLogo team={team.key} className="h-10 w-10" />
+                        <div>
+                          <p className="font-display text-lg font-semibold">{team.key}</p>
+                          <p className="text-xs text-white/55">{team.label}</p>
+                        </div>
+                      </div>
                       <p className="mt-1 text-xs text-white/60">{team.slogan}</p>
                     </button>
                   ))}

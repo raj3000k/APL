@@ -70,13 +70,17 @@ export function ChatRoomPanel({
                 <div
                   className={`max-w-[80%] rounded-[1.5rem] px-4 py-3 ${
                     isOwn
-                      ? "bg-[hsl(var(--theme-accent))] text-slate-950"
+                      ? "bg-[hsl(var(--theme-accent))] text-[hsl(var(--theme-on-accent))]"
                       : "bg-white/10 text-white"
                   }`}
                 >
                   {!isOwn ? <p className="text-xs font-semibold">{author?.name}</p> : null}
                   <p className="mt-1 text-sm leading-6">{entry.text}</p>
-                  <p className={`mt-2 text-[11px] ${isOwn ? "text-slate-800/80" : "text-white/45"}`}>
+                  <p
+                    className={`mt-2 text-[11px] ${
+                      isOwn ? "text-[hsl(var(--theme-on-accent))] opacity-75" : "text-white/45"
+                    }`}
+                  >
                     {timeAgo(entry.createdAt)}
                   </p>
                 </div>

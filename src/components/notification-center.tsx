@@ -27,7 +27,7 @@ export function NotificationCenter({
         <button className="relative rounded-2xl border border-white/10 bg-white/5 p-3 text-white transition hover:bg-white/10">
           <Bell className="h-5 w-5" />
           {unread > 0 ? (
-            <span className="absolute -right-1 -top-1 flex h-5 min-w-5 items-center justify-center rounded-full bg-[hsl(var(--theme-accent))] px-1 text-[10px] font-bold text-slate-950">
+            <span className="absolute -right-1 -top-1 flex h-5 min-w-5 items-center justify-center rounded-full bg-[hsl(var(--theme-accent))] px-1 text-[10px] font-bold text-[hsl(var(--theme-on-accent))]">
               {unread}
             </span>
           ) : null}

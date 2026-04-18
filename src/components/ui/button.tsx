@@ -9,7 +9,7 @@ const buttonVariants = cva(
     variants: {
       variant: {
         default:
-          "bg-[hsl(var(--theme-accent))] px-4 py-2.5 text-slate-950 shadow-lg shadow-black/30 hover:scale-[1.01] hover:brightness-110",
+          "bg-[hsl(var(--theme-accent))] px-4 py-2.5 text-[hsl(var(--theme-on-accent))] shadow-lg shadow-black/30 hover:scale-[1.01] hover:brightness-110",
         secondary:
           "glass-panel px-4 py-2.5 text-white hover:bg-white/10",
         ghost: "px-3 py-2 text-white/80 hover:bg-white/10 hover:text-white",

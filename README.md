@@ -43,6 +43,12 @@ cp .env.example .env.local
 
 3. Add your Supabase values to `.env.local`.
 
+Required frontend env values:
+
+- `VITE_SUPABASE_URL`
+- `VITE_SUPABASE_ANON_KEY`
+- `VITE_SUPABASE_REDIRECT_URL`
+
 4. Run the app:
 
 ```bash
@@ -55,13 +61,31 @@ yarn dev
 yarn build
 ```
 
+## Production Keys And Config I Need From You
+
+Send these together when you are ready and I can finish the live production wiring in one pass:
+
+1. `VITE_SUPABASE_URL`
+2. `VITE_SUPABASE_ANON_KEY`
+3. Production redirect URL you want to use for auth
+4. Google OAuth client ID
+5. Google OAuth client secret
+6. GCP project ID
+7. Preferred Cloud Run region
+
+Notes:
+
+- The Google OAuth client ID and secret are configured inside Supabase Auth, not exposed in the browser bundle.
+- For the current frontend-only build, I do not need the Supabase service role key yet.
+
 ## Supabase setup
 
 1. Create a Supabase project.
-2. In Supabase Auth, enable Google as an OAuth provider.
+2. In Supabase Auth, enable Google as an OAuth provider using the Google OAuth client ID and secret.
 3. Add these redirect URLs:
    - `http://localhost:5173`
    - your production Cloud Run URL
+   - the value you place in `VITE_SUPABASE_REDIRECT_URL`
 4. Run the SQL in [supabase/schema.sql](/Users/rajmotwani/Documents/APL/supabase/schema.sql:1).
 5. Create storage buckets such as:
    - `avatars`
@@ -106,6 +130,10 @@ gcloud run deploy fanpulse-ipl \
   --region us-central1 \
   --allow-unauthenticated
 ```
+
+## Color System Note
+
+The app shell now uses IPL’s official site blues as the base experience, and team selection swaps the UI to a franchise-specific palette mapped from the official team sites you shared. A couple of official endpoints were intermittently blocked during fetch, so those themes were completed with the teams’ official brand identities where the site response was incomplete.
 
 ## Important follow-up if you want fully live backend behavior
 

@@ -1,6 +1,7 @@
 import { LocateFixed, Radar } from "lucide-react";
 import { toast } from "sonner";
 import { NearbyFanCard } from "@/nearby/nearby-fan-card";
+import { TeamIdentity } from "@/components/team-logo";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import type { FanPulseActions } from "@/hooks/use-fanpulse";
@@ -59,7 +60,9 @@ export function NearbyPage({
         <CardContent className="grid gap-4 md:grid-cols-3">
           <div className="rounded-[1.6rem] border border-white/10 bg-white/5 p-5">
             <p className="text-xs uppercase tracking-[0.22em] text-white/45">Team filter</p>
-            <p className="mt-2 text-2xl font-semibold text-white">{currentUser.team}</p>
+            {currentUser.team ? (
+              <TeamIdentity team={currentUser.team} className="mt-2" logoClassName="h-8 w-8" textClassName="text-2xl" />
+            ) : null}
           </div>
           <div className="rounded-[1.6rem] border border-white/10 bg-white/5 p-5">
             <p className="text-xs uppercase tracking-[0.22em] text-white/45">Fans nearby</p>

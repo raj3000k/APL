@@ -12,5 +12,9 @@ export function useTeamTheme(team?: TeamKey) {
     root.style.setProperty("--theme-to", theme.to);
     root.style.setProperty("--theme-accent", theme.accent);
     root.style.setProperty("--theme-accent-soft", theme.accentSoft);
+    root.style.setProperty("--theme-shell-start", theme.shellStart);
+    root.style.setProperty("--theme-shell-mid", theme.shellMid);
+    root.style.setProperty("--theme-shell-end", theme.shellEnd);
+    root.style.setProperty("--theme-on-accent", theme.onAccent);
   }, [team]);
 }
